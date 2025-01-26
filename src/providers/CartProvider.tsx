@@ -26,15 +26,27 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     });
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const removeFromCart = (bookId: number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== bookId));
+  };
+
+  const updateQuantity = (id: number, quantity: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => (item.id === id ? { ...item, quantity } : item)),
+    );
   };
 
   const value: CartContextValue = {
     books,
     cart,
     addToCart,
+    clearCart,
     removeFromCart,
+    updateQuantity,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

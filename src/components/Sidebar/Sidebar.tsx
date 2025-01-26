@@ -1,4 +1,5 @@
 import { Drawer, Toolbar } from '@mui/material';
+import { ShoppingCart } from 'components/ShoppingCart';
 import React from 'react';
 
 export const Sidebar: React.FC = () => (
@@ -15,6 +16,6 @@ export const Sidebar: React.FC = () => (
     }}
   >
     <Toolbar />
-    {'ShoppingCart'}
+    <ShoppingCart />
   </Drawer>
 );
