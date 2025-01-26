@@ -16,3 +16,22 @@ export interface CartContextValue {
   removeFromCart: (bookId: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
 }
+
+export type UserProfile = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  dob: string;
+};
+
+export interface UserContextValue {
+  user: UserProfile;
+  updateUser: (user: UserProfile) => void;
+}
+
+export type FormErrors = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  dob?: string;
+};

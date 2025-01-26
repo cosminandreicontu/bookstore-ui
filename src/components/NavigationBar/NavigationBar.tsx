@@ -1,4 +1,5 @@
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { UserAvatar } from 'components/UserAvatar';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -36,6 +37,7 @@ export const NavigationBar: React.FC = () => (
         >
           Profile
         </Link>
+        <UserAvatar />
       </Box>
     </Toolbar>
   </AppBar>
