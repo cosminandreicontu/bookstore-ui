@@ -3,7 +3,7 @@ import { ShoppingCart } from 'components/ShoppingCart';
 import { useCart } from 'providers';
 import React from 'react';
 
-const drawerWidth = 240;
+const drawerWidth = 450;
 
 export const Sidebar: React.FC = () => {
   const { mobileCartOpen, handleCartToggle } = useCart();

@@ -9,7 +9,7 @@ export const MainView: React.FC = () => (
     component="main"
     sx={{
       flexGrow: 1,
-      maxWidth: { xs: '100%', md: '75%' },
+      maxWidth: { xs: '100%', md: '50%', lg: '60%', xl: '75%' },
       p: { xs: 2, md: 3 },
       bgcolor: 'background.default',
     }}

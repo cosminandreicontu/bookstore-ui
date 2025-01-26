@@ -55,6 +55,7 @@ export const ShoppingCart: React.FC = () => {
                 primary={item.title}
                 secondary={`Author: ${item.author} | Price: ${item.price}`}
               />
+
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <TextField
                   type="number"

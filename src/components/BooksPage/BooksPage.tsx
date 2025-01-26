@@ -47,7 +47,7 @@ export const BooksPage: React.FC = () => {
           >
             <ListItemText
               primary={book.title}
-              secondary={`Author: ${book.author} | Price: ${book.price.toFixed(2)}`}
+              secondary={`Author: ${book.author} | Price: ${book.price.toFixed(2)} | Stock: ${book.stock}`}
             />
             <Button
               variant="contained"
