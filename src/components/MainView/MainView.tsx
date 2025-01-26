@@ -1,6 +1,7 @@
 import { Box, Container, Toolbar } from '@mui/material';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { BooksPage } from 'components/BooksPage';
 
 export const MainView: React.FC = () => (
   <Box
@@ -14,7 +15,7 @@ export const MainView: React.FC = () => (
     <Toolbar />
     <Container maxWidth="lg">
       <Routes>
-        <Route path="/" element={<></>} />
+        <Route path="/" element={<BooksPage />} />
         <Route path="/profile" element={<></>} />
       </Routes>
     </Container>
