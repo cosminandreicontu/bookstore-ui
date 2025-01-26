@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# Bookstore UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Application structure/architecture
 
-Currently, two official plugins are available:
+#### First commit: d149a12 (Sun Jan 26 19:02:49 2025)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Last commit: 04b9377 (Sun Jan 26 22:10:07 2025)
 
-## Expanding the ESLint configuration
+#### Duration: 3h 8m
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Implemented the Core Features, Responsive design, basic error handling and the Bonus Feature (limited stock)
 
-- Configure the top-level `parserOptions` property like this:
+- components
+  - BooksPage
+  - MainView
+  - NavigationBar
+  - ShoppingCart
+  - Sidebar
+  - UserAvatar
+  - UserProfile
+- data
+- providers
+- types
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+App's main components:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- NavigationBar
+- MainView
+  - BooksPage
+  - UserProfile
+- Sidebar
+  - ShoppingCart
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Reasoning behind key technical choices (if applicable)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Used Vite as build tooling due to its speed (but also because CRA is deprecated)
+- Used React Context to share data between components (since the app wasn't complicated, state managers such as Redux were not needed)
+- Used Material-UI to take advantage of an existing component library
+
+## A summary of features that were not implemented, trade-offs made, and how you would approach them with more time or in a production environment.
+
+### 1. Missing unit and integration tests
+
+I've prefered not to use TDD and left the unit/integration tests at the end, but I ran out of time (3h) and didn't got the chance to write them.
+
+### 2. Error handling not very robust
+
+Error handling is added in the project but there are more cases than can be treated so, currently, this is not very robust.
+
+### Other considerations having more time
+
+1. Project structure can be improved.
+2. Limited stock feature should be better tested and probably refactored.
+3. Browser alerts should be replaced with custom alerts.
+4. UI/UX can be improved.
+5. (Optional) Integration with real backend (using REST API or GraphQL)
