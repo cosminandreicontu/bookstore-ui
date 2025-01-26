@@ -12,11 +12,22 @@ const App: React.FC = () => (
       <Router>
         <CssBaseline />
         <Box
-          sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+          }}
         >
           <NavigationBar />
-          <MainView />
-          <Sidebar />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              flexGrow: 1,
+            }}
+          >
+            <MainView />
+            <Sidebar />
+          </Box>
         </Box>
       </Router>
     </CartProvider>

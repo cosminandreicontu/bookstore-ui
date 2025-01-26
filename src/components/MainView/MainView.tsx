@@ -8,9 +8,10 @@ export const MainView: React.FC = () => (
   <Box
     component="main"
     sx={{
-      flex: 1,
+      flexGrow: 1,
+      maxWidth: { xs: '100%', md: '75%' },
+      p: { xs: 2, md: 3 },
       bgcolor: 'background.default',
-      p: 3,
     }}
   >
     <Toolbar />

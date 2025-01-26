@@ -15,6 +15,8 @@ export interface CartContextValue {
   clearCart: () => void;
   removeFromCart: (bookId: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
+  mobileCartOpen: boolean;
+  handleCartToggle: () => void;
 }
 
 export type UserProfile = {

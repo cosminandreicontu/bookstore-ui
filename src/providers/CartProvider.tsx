@@ -8,6 +8,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [books, setBooks] = useState<Book[]>(mockBooks);
+  const [mobileCartOpen, setMobileCartOpen] = useState<boolean>(false);
 
   console.log(setBooks); // to be removed
   console.log({ cart });
@@ -40,6 +41,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     );
   };
 
+  const handleCartToggle = () => {
+    setMobileCartOpen(!mobileCartOpen);
+  };
+
   const value: CartContextValue = {
     books,
     cart,
@@ -47,6 +52,8 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     clearCart,
     removeFromCart,
     updateQuantity,
+    mobileCartOpen,
+    handleCartToggle,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

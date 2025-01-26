@@ -1,21 +1,31 @@
-import { Drawer, Toolbar } from '@mui/material';
+import { Drawer, Toolbar, useMediaQuery, useTheme } from '@mui/material';
 import { ShoppingCart } from 'components/ShoppingCart';
+import { useCart } from 'providers';
 import React from 'react';
 
-export const Sidebar: React.FC = () => (
-  <Drawer
-    anchor="right"
-    variant="permanent"
-    sx={{
-      width: '30%',
-      flexShrink: 0,
-      [`& .MuiDrawer-paper`]: {
-        width: '30%',
-        boxSizing: 'border-box',
-      },
-    }}
-  >
-    <Toolbar />
-    <ShoppingCart />
-  </Drawer>
-);
+const drawerWidth = 240;
+
+export const Sidebar: React.FC = () => {
+  const { mobileCartOpen, handleCartToggle } = useCart();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  return (
+    <Drawer
+      anchor="right"
+      variant={isMobile ? 'temporary' : 'permanent'}
+      open={!isMobile || mobileCartOpen}
+      onClose={handleCartToggle}
+      sx={{
+        display: { xs: mobileCartOpen ? 'block' : 'none', md: 'block' },
+        '& .MuiDrawer-paper': {
+          width: { xs: '100%', md: drawerWidth },
+          boxSizing: 'border-box',
+        },
+      }}
+    >
+      <Toolbar />
+      <ShoppingCart />
+    </Drawer>
+  );
+};
