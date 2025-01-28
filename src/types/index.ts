@@ -11,12 +11,14 @@ export type CartItem = Omit<Book, 'stock'> & { quantity: number };
 export interface CartContextValue {
   books: Book[];
   cart: CartItem[];
+  soldBooks: CartItem[];
   addToCart: (book: Book) => void;
   clearCart: () => void;
   removeFromCart: (bookId: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   mobileCartOpen: boolean;
   handleCartToggle: () => void;
+  updateSoldBooks: (soldBooks: CartItem[]) => void;
 }
 
 export type UserProfile = {

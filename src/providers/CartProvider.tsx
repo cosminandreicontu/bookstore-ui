@@ -9,6 +9,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const [cart, setCart] = useState<CartItem[]>([]);
   const [books, setBooks] = useState<Book[]>(mockBooks);
   const [mobileCartOpen, setMobileCartOpen] = useState<boolean>(false);
+  const [soldBooks, setSoldBooks] = useState<CartItem[]>([]);
 
   const addToCart = (book: Book) => {
     let remainingStock = book.stock;
@@ -94,15 +95,38 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     setMobileCartOpen(!mobileCartOpen);
   };
 
+  const updateSoldBooks = (items: CartItem[]) => {
+    items.forEach((i) => {
+      const existingItem = soldBooks.find((sb) => sb.id === i.id);
+      if (existingItem) {
+        //update quantity
+        setSoldBooks((prevState) =>
+          prevState.map((pS) => {
+            if (pS.id === existingItem.id) {
+              return { ...pS, quantity: pS.quantity + existingItem.quantity };
+            } else {
+              return { ...pS };
+            }
+          }),
+        );
+      } else {
+        //add
+        setSoldBooks((prevState) => [...prevState, i]);
+      }
+    });
+  };
+
   const value: CartContextValue = {
     books,
     cart,
+    soldBooks,
     addToCart,
     clearCart,
     removeFromCart,
     updateQuantity,
     mobileCartOpen,
     handleCartToggle,
+    updateSoldBooks,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

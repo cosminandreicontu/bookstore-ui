@@ -13,7 +13,14 @@ import { useCart } from 'providers';
 import React, { useState } from 'react';
 
 export const ShoppingCart: React.FC = () => {
-  const { cart, clearCart, removeFromCart, updateQuantity } = useCart();
+  const {
+    cart,
+    soldBooks,
+    clearCart,
+    removeFromCart,
+    updateQuantity,
+    updateSoldBooks,
+  } = useCart();
   const [open, setOpen] = useState(false);
 
   const handleQuantityChange = (id: number, quantity: number) => {
@@ -29,6 +36,7 @@ export const ShoppingCart: React.FC = () => {
   );
 
   const handleSubmit = () => {
+    updateSoldBooks(cart);
     setOpen(true);
     clearCart();
   };
@@ -92,6 +100,26 @@ export const ShoppingCart: React.FC = () => {
           Submit
         </Button>
 
+        <Box sx={{ mt: 10 }}>
+          <Typography variant="h6" gutterBottom>
+            Most sold books
+          </Typography>
+          <List>
+            {soldBooks
+              .sort((a, b) => (a.quantity < b.quantity ? 1 : -1))
+              .map((book) => (
+                <ListItem
+                  key={book.id}
+                  sx={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                  <ListItemText
+                    primary={book.title}
+                    secondary={`Author: ${book.author} | Price: ${book.price.toFixed(2)} | Sold: ${book.quantity}`}
+                  />
+                </ListItem>
+              ))}
+          </List>
+        </Box>
         <Snackbar
           open={open}
           autoHideDuration={6000}
